@@ -931,6 +931,9 @@ body.theme-synthwave .work-text p {
         body.theme-forest .nav-toggle .hamburger::after {
             background: linear-gradient(90deg, var(--Color-Primary), var(--Color-Secondary));
         }
+        body.theme-forest .nav-toggle[aria-expanded="true"] .hamburger {
+            background: transparent;
+        }
     .main-card img { max-width: 100%; }
     .gallery-btn { display: none; }
     .hero-image { display: none; }
