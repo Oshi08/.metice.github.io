@@ -103,6 +103,10 @@ body {
     font-family: var(--font-main);
     transition: background-color var(--Transition), color var(--Transition);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
 }
 
 img, picture, video {
@@ -490,6 +494,7 @@ body.theme-synthwave .button-secondary:hover {
     margin: 0 0 10px 0;
     background-clip: text;
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
     white-space: normal;
     word-break: break-word;
@@ -673,7 +678,13 @@ body.theme-synthwave .sponsor-logo img:hover {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.25s ease-out;
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+.main-card img.fade-out {
+    opacity: 0;
 }
 
 .gallery-btn {
@@ -858,6 +869,10 @@ body.theme-synthwave .work-text p {
 
 
 @media (max-width: 900px) {
+    .main-card img {
+        transition: opacity 0.18s ease-out;
+    }
+
     .hero-buttons,
     .work-actions,
     .Wrap-actions,
@@ -1195,6 +1210,16 @@ body.theme-synthwave .Wrap-content h2 {
     .fixed-theme-button-container #theme-toggle-button:hover {
         transform: none;
         box-shadow: none;
+    }
+}
+
+/* Ajustes específicos Safari/iOS */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll;
+    }
+    .fullwidth-banner {
+        background-attachment: scroll;
     }
 }
 
@@ -1620,6 +1645,9 @@ body.theme-synthwave .footer-social img {
     cursor: pointer;
     transition: transform var(--Transition), box-shadow var(--Transition), background var(--Transition);
     z-index: 3;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transform: translateZ(0);
 }
 
 .video-play-button:hover {

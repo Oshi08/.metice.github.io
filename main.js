@@ -26,22 +26,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }, SLIDESHOW_DELAY);
     }
 
+    let isAnimating = false;
+
     function updateGallery(index) {
-        if (index === currentIndex) return;
+        if (index === currentIndex || isAnimating) return;
+        isAnimating = true;
 
-        mainImage.style.opacity = '0';
-
-        setTimeout(() => {
+        const onFadeOut = () => {
+            mainImage.removeEventListener('transitionend', onFadeOut);
             mainImage.src = imageSources[index];
-            mainImage.style.opacity = '1';
 
-            if (thumbnails[currentIndex]) {
-                thumbnails[currentIndex].classList.remove('active');
-            }
-            thumbnails[index].classList.add('active');
+            requestAnimationFrame(() => {
+                const onFadeIn = () => {
+                    mainImage.removeEventListener('transitionend', onFadeIn);
+                    isAnimating = false;
+                };
+                mainImage.addEventListener('transitionend', onFadeIn);
+                mainImage.classList.remove('fade-out');
+            });
+        };
 
-            currentIndex = index;
-        }, 300);
+        mainImage.addEventListener('transitionend', onFadeOut);
+        mainImage.classList.add('fade-out');
+
+        if (thumbnails[currentIndex]) {
+            thumbnails[currentIndex].classList.remove('active');
+        }
+        thumbnails[index].classList.add('active');
+        currentIndex = index;
     }
 
     thumbnails.forEach((thumbnail, index) => {
