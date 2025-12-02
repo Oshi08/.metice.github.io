@@ -159,18 +159,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const navToggle = document.querySelector('.nav-toggle');
-    const mainMenu = document.querySelector('.Menu-Navegacion');
+    const menuContainer = document.querySelector('.menu-container');
+    const mainContent = document.querySelector('main');
+    const menuHeight = 220; // Corresponds to the .menu-container.open height
+    const headerHeight = 80; // Corresponds to the initial main padding-top
 
-    if (navToggle && mainMenu) {
+    if (navToggle && menuContainer && mainContent) {
+        const updateContentPadding = () => {
+            if (menuContainer.classList.contains('open')) {
+                mainContent.style.paddingTop = `${headerHeight + menuHeight}px`;
+            } else {
+                mainContent.style.paddingTop = `${headerHeight}px`;
+            }
+        };
+
         navToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            mainMenu.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', mainMenu.classList.contains('open'));
+            menuContainer.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', menuContainer.classList.contains('open'));
+            updateContentPadding();
         });
 
         document.addEventListener('click', function() {
-            mainMenu.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
+            if (menuContainer.classList.contains('open')) {
+                menuContainer.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                updateContentPadding();
+            }
         });
     }
 });
