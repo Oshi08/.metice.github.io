@@ -1239,6 +1239,11 @@ body.theme-synthwave .Wrap-content h2 {
         transition: none !important;
     }
 
+    /* Permitir que el contenido baje con suavidad al abrir el menú */
+    main {
+        transition: padding-top 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    }
+
     .menu-container,
     .nav-toggle .hamburger,
     .nav-toggle .hamburger::before,
