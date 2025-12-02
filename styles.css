@@ -903,7 +903,10 @@ body.theme-synthwave .work-text p {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             height: 0;
-            transition: height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: height 0.24s ease-out;
+            will-change: height;
+            contain: layout paint;
+            transform: translateZ(0);
             z-index: -1;
         }
 
@@ -1222,6 +1225,29 @@ body.theme-synthwave .Wrap-content h2 {
     .fixed-theme-button-container #theme-toggle-button:hover {
         transform: none;
         box-shadow: none;
+    }
+
+    /* Desactiva animaciones generales en móvil salvo menú y galería */
+    body * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Permitir animación del título en mobile */
+    .title-char {
+        animation: revealChar 0.6s forwards cubic-bezier(0.2, 0.8, 0.2, 1), animated-gradient 4s ease-in-out infinite !important;
+        transition: none !important;
+    }
+
+    .menu-container,
+    .nav-toggle .hamburger,
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+        transition: height 0.24s ease-out !important;
+    }
+
+    .main-card img {
+        transition: opacity 0.18s ease-out !important;
     }
 }
 
