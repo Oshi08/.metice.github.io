@@ -532,7 +532,7 @@ body.theme-synthwave .button-secondary:hover {
 .hero-image {
     flex: 1.4;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -761,7 +761,7 @@ body.theme-synthwave .work-text p {
     }
     .hero-content {
         justify-content: center;
-        gap: 32px;
+        gap: 20px;
     }
     .hero-text {
         text-align: center;
