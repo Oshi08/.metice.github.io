@@ -435,14 +435,14 @@ body.theme-synthwave .button-secondary:hover {
 .hero-content {
     display: flex;
     align-items: center;
-    gap: clamp(32px, 6vw, 60px);
+    gap: clamp(20px, 4vw, 40px);
     width: min(var(--layout-max), calc(100% - (var(--page-padding) * 2)));
     margin: 0 auto;
 }
 
 .hero-text {
     max-width: 380px;
-    padding-top: 40px;
+    padding-top: 20px;
     flex: 1;
     padding-bottom: 20px;
     z-index: 1;
@@ -532,13 +532,13 @@ body.theme-synthwave .button-secondary:hover {
 .hero-image {
     flex: 1.4;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: clamp(520px, 48vw, 820px);
+    max-width: clamp(600px, 55vw, 900px);
     height: auto;
     animation: float 3s ease-in-out infinite;
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
@@ -761,7 +761,7 @@ body.theme-synthwave .work-text p {
     }
     .hero-content {
         justify-content: center;
-        gap: 20px;
+        gap: 32px;
     }
     .hero-text {
         text-align: center;
