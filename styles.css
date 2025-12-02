@@ -902,6 +902,12 @@ body.theme-synthwave .work-text p {
         body.theme-synthwave .nav-toggle .hamburger::after {
             background: var(--Nav-Text);
         }
+
+        body.theme-sunset .nav-toggle .hamburger,
+        body.theme-sunset .nav-toggle .hamburger::before,
+        body.theme-sunset .nav-toggle .hamburger::after {
+            background: #fff;
+        }
     
         body.theme-synthwave .nav-link {
             color: #fff;
